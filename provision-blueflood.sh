@@ -27,6 +27,7 @@ echo Install Cassandra
 wget http://apache-mirror.rbc.ru/pub/apache/cassandra/2.1.8/apache-cassandra-2.1.8-bin.tar.gz
 sudo tar xzf apache-cassandra-2.1.8-bin.tar.gz -C /opt
 sudo ln -s /opt/apache-cassandra-2.1.8 /opt/cassandra
+sudo chown -R vagrant:vagrant /opt/cassandra
 sudo chown -R vagrant:vagrant /opt/cassandra/
 
 # TODO: ElasticSearch
