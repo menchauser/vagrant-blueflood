@@ -38,7 +38,7 @@ sudo chown -R vagrant:vagrant /src/
 git clone http://github.com/rackerlabs/blueflood.git /src/blueflood
 
 # Install schema for Cassandra
-/vagrant/start-cassandra.sh
+/opt/cassandra/bin/cassandra
 sleep 5
 /opt/cassandra/bin/cassandra-cli -h 127.0.0.1 -p 9160 -f /src/blueflood/src/cassandra/cli/load.script
 
