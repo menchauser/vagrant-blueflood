@@ -38,9 +38,28 @@ sudo chown -R vagrant:vagrant /src/
 git clone http://github.com/rackerlabs/blueflood.git /src/blueflood
 
 # Install schema for Cassandra
-cd /src/blueflood
+/vagrant/start-cassandra.sh
+sleep 5
+/opt/cassandra/bin/cassandra-cli -h 127.0.0.1 -p 9160 -f /src/blueflood/src/cassandra/cli/load.script
+
 # Build BlueFlood
+cd /src/blueflood
 mvn package -P all-modules
 
-#sleep 5
-#$CASSANDRA_HOME/bin/cassandra_cli -f ./src/cassandra/cli/load.script -h 127.0.0.1 -p 9160
+# Install blueflood
+cp /src/blueflood/blueflood-all/target/blueflood-all-2.0.0-SNAPSHOT-jar-with-dependencies.jar /src/blueflood/
+cp /vagrant/blueflood.conf /src/blueflood/
+cp /vagrant/blueflood-log4j.properties /src/blueflood/
+
+# Start BlueFlood
+/usr/bin/java \
+        -Dblueflood.config=file:blueflood.conf \
+        -Dlog4j.configuration=file:blueflood-log4j.properties \
+        -Xms1G \
+        -Xmx1G \
+        -Dcom.sun.management.jmxremote.authenticate=false \
+        -Dcom.sun.management.jmxremote.ssl=false \
+        -Djava.rmi.server.hostname=127.0.0.1 \
+        -Dcom.sun.management.jmxremote.port=9180 \
+        -classpath blueflood-all-2.0.0-SNAPSHOT-jar-with-dependencies.jar com.rackspacecloud.blueflood.service.BluefloodServiceStarter
+
