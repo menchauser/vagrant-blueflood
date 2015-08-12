@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-./start-cassandra.sh
+/opt/cassandra/bin/cassandra
 sleep 5
 
 cd /src/blueflood
