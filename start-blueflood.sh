@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-/opt/cassandra/bin/cassandra
-sleep 5
-
 cd /src/blueflood
 /usr/bin/java \
         -Dblueflood.config=file:blueflood.conf \
