@@ -13,7 +13,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-software-proper
 # Install Oracle Java 7
 sudo add-apt-repository ppa:webupd8team/java -y
 sudo apt-get update
-sudo echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+sudo echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 sudo apt-get install -y oracle-java7-installer
 
 # Set Oracle Java as default
