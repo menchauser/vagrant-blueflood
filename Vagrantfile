@@ -71,7 +71,7 @@ Vagrant.configure(2) do |config|
   # Update Ubuntu
   # config.vm.provision "shell", path: "provision-ubuntu.sh"
   # Install BlueFlood
-  config.vm.provision "shell", path: "provision-blueflood.sh"
+  config.vm.provision "shell", path: "provision-blueflood.sh", privileged: false
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
