@@ -30,6 +30,10 @@ sudo ln -s /opt/apache-cassandra-2.1.8 /opt/cassandra
 sudo chown -R vagrant:vagrant /opt/cassandra
 sudo chown -R vagrant:vagrant /opt/cassandra/
 
+# Start Cassandra
+/opt/cassandra/bin/cassandra
+sleep 10
+
 # TODO: ElasticSearch
 
 # Clone BlueFlood repository
@@ -39,8 +43,6 @@ sudo chown -R vagrant:vagrant /src/
 git clone http://github.com/rackerlabs/blueflood.git /src/blueflood
 
 # Install schema for Cassandra
-/opt/cassandra/bin/cassandra
-sleep 5
 /opt/cassandra/bin/cassandra-cli -h 127.0.0.1 -p 9160 -f /src/blueflood/src/cassandra/cli/load.script
 
 # Build BlueFlood
